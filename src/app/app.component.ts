@@ -14,13 +14,13 @@ export class AppComponent {
   month: number = this.currentTime.getMonth() + 1;
   day: number = this.currentTime.getDay();
   year: number = this.currentTime.getFullYear();
-  tasks: Task[] = [
-    new Task('Finsih weekend Angular home for Epicodus course', 3),
-    new Task('Begin brainstorming possible Javascript group Projects', 2),
-    new Task('Add README file to last few Angular Repos on GitHub', 2)
-  ]
-
   selectedTask = null;
+ 
+  masterTaskList: Task[] = [
+    new Task('Finish weekend Angular homework for Epicodus course', 3),
+    new Task('Begin brainstorming possible JavaScript group projects', 2),
+    new Task('Add README file to last few Angular repos on GitHub', 2)
+  ];
 
   editTask(clickedTask) {
     this.selectedTask = clickedTask;
@@ -29,14 +29,10 @@ export class AppComponent {
   finishedEditing() {
     this.selectedTask = null;
   }
-  
-  priorityColor(currentTask){
-    if (currentTask.priority === 3){
-      return "bg-danger";
-    } else if (currentTask.priority === 2) {
-      return  "bg-warning";
-    } else {
-      return "bg-info";
-    }    
+
+  addTask(newTask: Task) {
+    this.masterTaskList.push(newTask);
   }
+  
+
 }
